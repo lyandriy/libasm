@@ -74,6 +74,7 @@ mov rax, [rdi]   ; cargar 8 bytes
 🧠 Truco para recordar:
 
 🔹 cmp compara valores completos.
+
 🔹 test comprueba si hay bits encendidos, como para verificar si algo es 0.
 
 ✅ ¿Qué hace movzx?
@@ -86,14 +87,14 @@ movzx significa "Move with Zero-Extension".
 Cuando trabajas con strings (char, 1 byte), los cargas en registros pequeños como al, bl...
 
 Pero muchas instrucciones (como sub, cmp, etc.) necesitan trabajar con registros de 32 o 64 bits para no tener resultados raros por tamaños distintos.
+
 Tienes que decirle explícitamente cómo rellenar los bits restantes. Para eso existen:
 
-movzx → rellena con ceros (para unsigned)
-
-movsx → rellena con el signo (para signed)
+|movzx → rellena con ceros (para unsigned)|
+|movsx → rellena con el signo (para signed)|
 
 cuando accedes a memoria con [rdi], el ensamblador necesita saber cuántos bytes leer:
-| Instrucción      |
+|                  |
 | ---------------- |
 |¿1 byte? (byte)   |
 |¿2 bytes? (word)  |
