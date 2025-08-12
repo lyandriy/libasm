@@ -72,6 +72,7 @@ mov rax, [rdi]   ; cargar 8 bytes
 | `test A, B` | Hace `A AND B` (bit a bit) y actualiza los flags, **sin guardar el resultado**  | Cuando quieres saber si algún bit de A (o A y B) está encendido, o si `A == 0` |
 
 🧠 Truco para recordar:
+
 🔹 cmp compara valores completos.
 🔹 test comprueba si hay bits encendidos, como para verificar si algo es 0.
 
@@ -90,3 +91,32 @@ Tienes que decirle explícitamente cómo rellenar los bits restantes. Para eso e
 movzx → rellena con ceros (para unsigned)
 
 movsx → rellena con el signo (para signed)
+
+cuando accedes a memoria con [rdi], el ensamblador necesita saber cuántos bytes leer:
+
+¿1 byte? (byte)
+
+¿2 bytes? (word)
+
+¿4 bytes? (dword)
+
+¿8 bytes? (qword)
+
+📜 Tabla de saltos en ensamblador x86-64
+| Instrucción | Significado (inglés)     | Cuándo salta (`cmp a, b`)                  | Interpretación habitual       |
+| ----------- | ------------------------ | ------------------------------------------ | ----------------------------- |
+| `je`        | Jump if Equal            | Si **a == b** (flag ZF=1)                  | Igual que en C: `if (a == b)` |
+| `jne`       | Jump if Not Equal        | Si **a != b** (ZF=0)                       | `if (a != b)`                 |
+| `jg`        | Jump if Greater          | Si **a > b** (solo para enteros con signo) | `if (a > b)`                  |
+| `jge`       | Jump if Greater or Equal | Si **a >= b** (con signo)                  | `if (a >= b)`                 |
+| `jl`        | Jump if Less             | Si **a < b** (con signo)                   | `if (a < b)`                  |
+| `jle`       | Jump if Less or Equal    | Si **a <= b** (con signo)                  | `if (a <= b)`                 |
+| `ja`        | Jump if Above            | Si **a > b** (sin signo)                   | Para comparar `unsigned`      |
+| `jae`       | Jump if Above or Equal   | Si **a >= b** (sin signo)                  | `unsigned` >=                 |
+| `jb`        | Jump if Below            | Si **a < b** (sin signo)                   | `unsigned` <                  |
+| `jbe`       | Jump if Below or Equal   | Si **a <= b** (sin signo)                  | `unsigned` <=                 |
+| `jmp`       | Jump (unconditional)     | Siempre salta                              | Goto                          |
+| `jz`        | Jump if Zero             | Igual que `je`                             | Salta si resultado es cero    |
+| `jnz`       | Jump if Not Zero         | Igual que `jne`                            | Salta si resultado no es cero |
+| `js`        | Jump if Sign             | Si el resultado es negativo (SF=1)         |                               |
+| `jns`       | Jump if Not Sign         | Si el resultado no es negativo (SF=0)      |                               |
