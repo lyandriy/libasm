@@ -93,14 +93,12 @@ movzx → rellena con ceros (para unsigned)
 movsx → rellena con el signo (para signed)
 
 cuando accedes a memoria con [rdi], el ensamblador necesita saber cuántos bytes leer:
-
-¿1 byte? (byte)
-
-¿2 bytes? (word)
-
-¿4 bytes? (dword)
-
-¿8 bytes? (qword)
+| Instrucción      |
+| ---------------- |
+|¿1 byte? (byte)   |
+|¿2 bytes? (word)  |
+|¿4 bytes? (dword) |
+|¿8 bytes? (qword) |
 
 📜 Tabla de saltos en ensamblador x86-64
 | Instrucción | Significado (inglés)     | Cuándo salta (`cmp a, b`)                  | Interpretación habitual       |
@@ -120,3 +118,21 @@ cuando accedes a memoria con [rdi], el ensamblador necesita saber cuántos bytes
 | `jnz`       | Jump if Not Zero         | Igual que `jne`                            | Salta si resultado no es cero |
 | `js`        | Jump if Sign             | Si el resultado es negativo (SF=1)         |                               |
 | `jns`       | Jump if Not Sign         | Si el resultado no es negativo (SF=0)      |                               |
+
+🔹 Directivas más comunes que podrías encontrar
+| Directiva | Para qué sirve                                                 | Ejemplo               |
+| --------- | -------------------------------------------------------------- | --------------------- |
+| `section` | Indica en qué parte del ejecutable va el código o datos        | `section .text`       |
+| `global`  | Hace que una etiqueta sea visible desde fuera del archivo      | `global ft_strlen`    |
+| `extern`  | Declara que una función/variable está definida en otro archivo | `extern malloc`       |
+| `db`      | Define datos en memoria (bytes)                                | `msg db "Hola", 0`    |
+| `dw`      | Define un valor de 2 bytes (*word*)                            | `num dw 1234`         |
+| `dd`      | Define un valor de 4 bytes (*double word*)                     | `valor dd 0x12345678` |
+| `dq`      | Define un valor de 8 bytes (*quad word*)                       | `grande dq 123456789` |
+| `resb`    | Reserva bytes en la sección `.bss` (no inicializados)          | `buffer resb 64`      |
+| `resw`    | Reserva palabras de 2 bytes                                    | `arr resw 10`         |
+| `resd`    | Reserva dobles palabras de 4 bytes                             | `arr resd 20`         |
+| `resq`    | Reserva cuádruples palabras de 8 bytes                         | `arr resq 5`          |
+| `equ`     | Crea una constante                                             | `BUF_SIZE equ 256`    |
+| `%define` | Macro que sustituye texto, similar a `#define` en C            | `%define MAX 100`     |
+
