@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <unistd.h>
 #include <string.h>
 
 size_t ft_strlen(const char *s);
@@ -8,7 +9,7 @@ int ft_strcmp(const char *s1, const char *s2);
 int main(void)
 {
     char *s ="hola";
-    char *ss ="hola2";
+    char *ss ="hola";
     char des[10];
     char dees[10];
 
@@ -16,8 +17,8 @@ int main(void)
     printf("ft_strlen: %zu\n", ft_strlen(s));
     printf("strcpy: %s\n", strcpy(des, s));
     printf("ft_strcpy: %s\n", ft_strcpy(dees, ss));
-    printf("strcmp: %s\n", strcmp(ss, s));
-    printf("ft_strcmp: %s\n", ft_strcmp(ss, s));
+    printf("strcmp: %d\n", strcmp(ss, s));
+    printf("ft_strcmp: %d\n", ft_strcmp(ss, s));
 
     return 0;
 }
