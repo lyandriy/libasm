@@ -71,8 +71,7 @@ mov rax, [rdi]   ; cargar 8 bytes
 | `ret`       | Retornar de función          | Devuelve al llamador; el valor de retorno debe estar en `rax`                                                             |
 | `nop`       | No hacer nada                | `nop` no hace nada; útil para alineación o depuración                                                                     |
 | `lea`       | Load effective address       | `lea rax, [rdi+4]` calcula la dirección `rdi+4` y la guarda en `rax`, sin acceder a memoria                               |
-| `syscall`   | Llama al sistema operativo | Usado para `write`, `read`, etc. (como funciones C) 
-https://blog.rchapman.org/posts/Linux_System_Call_Table_for_x86_64/ |
+| `syscall`   | Llama al sistema operativo | Usado para `write`, `read`, etc. (como funciones C) https://blog.rchapman.org/posts/Linux_System_Call_Table_for_x86_64/ |
 
 🆚 Diferencias clave entre test y cmp:
 | Instrucción | Qué hace                                                                        | Cuándo se usa                                                                  |
