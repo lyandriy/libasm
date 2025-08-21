@@ -52,17 +52,25 @@ mov rax, [rdi]   ; cargar 8 bytes
 
 
 ⚙️ INSTRUCCIONES MÁS USADAS
-| Instrucción | Significado                | ¿Para qué se usa?                                   |
-| ----------- | -------------------------- | --------------------------------------------------- |
-| `mov`       | Copiar un valor            | `mov rax, 0` pone 0 en `rax`, `mov rax, rdi` copia  |
-| `xor`       | Operación XOR              | `xor rax, rax` para poner `rax = 0` (muy usado)     |
-| `cmp`       | Comparar                   | Para ver si dos valores son iguales/diferentes      |
-| `je`        | Jump if Equal              | Saltar si dos valores eran iguales (`cmp` ==)       |
-| `jne`       | Jump if Not Equal          | Saltar si son distintos                             |
-| `jmp`       | Salto incondicional        | Para repetir bucles o saltar a partes del código    |
-| `inc`       | Incrementar (sumar 1)      | `inc rax` → suma 1                                  |
-| `dec`       | Decrementar (restar 1)     | `dec rax` → resta 1                                 |
-| `ret`       | Return                     | Finaliza la función                                 |
+| Instrucción | Descripción                  | Ejemplo / Explicación                                                                                                     |
+| ----------- | ---------------------------- | ------------------------------------------------------------------------------------------------------------------------- |
+| `mov`       | Copiar un valor              | `mov rax, 0` pone 0 en `rax`; `mov rax, rdi` copia `rdi` a `rax`; `mov al, byte [rsi]` copia un byte desde memoria a `al` |
+| `xor`       | XOR bit a bit                | `xor rax, rax` pone `rax = 0` (muy usado para inicializar registros)                                                      |
+| `cmp`       | Comparar valores             | `cmp al, 0` compara `al` con 0, afectando flags (para usar con `je`, `jne`...)                                            |
+| `je`        | Salto si igual               | `je end_loop` salta a `end_loop` si la comparación anterior fue igual (`ZF=1`)                                            |
+| `jne`       | Salto si distinto            | `jne loop` salta si la comparación anterior fue distinta (`ZF=0`)                                                         |
+| `inc`       | Incrementar                  | `inc rsi` aumenta `rsi` en 1 (útil para moverse por arrays o cadenas)                                                     |
+| `dec`       | Decrementar                  | `dec rdi` reduce `rdi` en 1                                                                                               |
+| `add`       | Sumar                        | `add rax, rbx` suma `rbx` a `rax`                                                                                         |
+| `sub`       | Restar                       | `sub rax, rbx` resta `rbx` de `rax`                                                                                       |
+| `push`      | Guardar en stack             | `push rdi` guarda `rdi` en la pila (útil antes de llamar a otra función o para preservar registros)                       |
+| `pop`       | Sacar del stack              | `pop rdi` restaura el valor previamente guardado en stack                                                                 |
+| `jmp`       | Salto incondicional          | `jmp loop` salta sin condición a la etiqueta `loop`                                                                       |
+| `movsx`     | Mover con extensión de signo | `movsx rax, al` convierte un byte `al` en entero de 64 bits con signo                                                     |
+| `movzx`     | Mover con extensión de cero  | `movzx rax, al` convierte un byte `al` en entero de 64 bits sin signo                                                     |
+| `ret`       | Retornar de función          | Devuelve al llamador; el valor de retorno debe estar en `rax`                                                             |
+| `nop`       | No hacer nada                | `nop` no hace nada; útil para alineación o depuración                                                                     |
+| `lea`       | Load effective address       | `lea rax, [rdi+4]` calcula la dirección `rdi+4` y la guarda en `rax`, sin acceder a memoria                               |
 | `syscall`   | Llama al sistema operativo | Usado para `write`, `read`, etc. (como funciones C) |
 
 🆚 Diferencias clave entre test y cmp:
