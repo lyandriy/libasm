@@ -6,8 +6,12 @@ ft_read:
     mov rax, 0
     syscall
     cmp rax, 0
-    jl ret_error
+    jl .error
     ret
-ret_error:
+.error:
+    neg rax
+    mov rdi, rax
+    call ___error
+    mov [rax], rdi
     mov rax, -1
     ret

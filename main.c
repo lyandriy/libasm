@@ -20,6 +20,7 @@ int main(void)
     char dees[10];
     char buff[10];
     int fd = open("text.txt", O_RDONLY);
+    char *ptr;
 
     printf("strlen: %zu\n", strlen(s));
     printf("ft_strlen: %zu\n", ft_strlen(s));
@@ -30,7 +31,8 @@ int main(void)
     printf("ft_write: %ld\n", ft_write(1, "hola\n", 5));
     printf("ft_read: %ld\n", ft_read(fd, buff, 5));
     printf("\nft_write: %ld\n", ft_write(1, buff, 10));
-    printf("ft_strdup: %s\n", ft_write("que tal\n"));
+    ptr = ft_strdup("lalalalalallal");
+    printf("%s\n", ptr);
 
     return 0;
 }

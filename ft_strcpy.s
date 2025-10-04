@@ -5,12 +5,12 @@ global ft_strcpy
 ft_strcpy:
     mov rax, rdi
 loop:
-    mov bl, byte [rsi]
-    mov byte [rdi], bl
-    cmp bl, 0
-    je end_loop
+    mov al, byte [rsi]
+    mov byte [rdi], al
+    cmp al, 0
+    je .end
     inc rsi
     inc rdi
     jmp loop
-end_loop:
+.end:
     ret
