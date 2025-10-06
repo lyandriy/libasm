@@ -5,19 +5,20 @@ global ft_strcmp
 ft_strcmp:
     xor rax, rax
 loop:
-    mov al, byte [rdi]
+    mov cl, byte [rdi]
     mov dl, byte [rsi]
-    cmp al, dl
+    cmp cl, dl
     jne .end
-    test al, al
+    test cl, cl
     je .equal
     inc rdi
     inc rsi
     jmp loop
 .end:
-    movsx rax, al
+    movsx rcx, cl
     movsx rdx, dl
-    sub rax, rdx
+    sub rcx, rdx
+    mov rax, rcx
     ret
 .equal:
     xor rax, rax

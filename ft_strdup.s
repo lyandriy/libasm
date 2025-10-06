@@ -1,9 +1,9 @@
 section .text
 
-global ft_strdup
-extern ft_strlen
-extern malloc
-extern ft_strcpy
+    global ft_strdup
+    extern ft_strlen
+    extern malloc
+    extern ft_strcpy
 
 ft_strdup:
     call ft_strlen  ;strlen rrecibe como argumento rdi y la longitud la devuelve en rax

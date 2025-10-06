@@ -1,16 +1,4 @@
-#include <stdio.h>
-#include <unistd.h>
-#include <string.h>
-#include <sys/types.h>
-#include <sys/stat.h>
-#include <fcntl.h>
-
-size_t ft_strlen(const char *s);
-char *ft_strcpy(char *dest, const char *src);
-int ft_strcmp(const char *s1, const char *s2);
-ssize_t ft_write(int fd, const void *buf, size_t count);
-ssize_t ft_read(int fd, void *buf, size_t count);
-char *ft_strdup(const char *s);
+#include "libasm.h"
 
 int main(void)
 {
@@ -19,7 +7,8 @@ int main(void)
     char des[10];
     char dees[10];
     char buff[10];
-    int fd = open("text.txt", O_RDONLY);
+    int fd = open("tet.txt", O_RDONLY);
+    int fd_ = open("text.txt", O_RDONLY);
     char *ptr;
 
     printf("strlen: %zu\n", strlen(s));
@@ -30,6 +19,8 @@ int main(void)
     printf("ft_strcmp: %d\n", ft_strcmp(ss, s));
     printf("ft_write: %ld\n", ft_write(1, "hola\n", 5));
     printf("ft_read: %ld\n", ft_read(fd, buff, 5));
+    printf("\nft_write: %ld\n", ft_write(1, buff, 10));
+    printf("ft_read: %ld\n", ft_read(fd_, buff, 5));
     printf("\nft_write: %ld\n", ft_write(1, buff, 10));
     ptr = ft_strdup("lalalalalallal");
     printf("%s\n", ptr);

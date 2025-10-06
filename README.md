@@ -145,3 +145,10 @@ cuando accedes a memoria con [rdi], el ensamblador necesita saber cuántos bytes
 | `equ`     | Crea una constante                                             | `BUF_SIZE equ 256`    |
 | `%define` | Macro que sustituye texto, similar a `#define` en C            | `%define MAX 100`     |
 
+La convención SysV define que ciertos registros son caller-saved (puedes modificarlos sin problema dentro de tu función):
+
+rax, rcx, rdx, rsi, rdi, r8–r11
+
+Otros son callee-saved (si los modificas, debes restaurarlos al final):
+
+rbx, rbp, r12–r15
